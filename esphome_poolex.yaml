@@ -1,0 +1,77 @@
+substitutions:
+  device_id: "pool_heat_pump"
+
+esphome:
+  name: eh_${device_id}
+
+esp8266:
+  board: esp12e
+
+# Enable logging
+logger:
+
+# Enable Home Assistant API
+api:
+  encryption:
+    key: "EDIT_ME"
+
+ota:
+  password: "EDIT_ME"
+
+wifi:
+  ssid: "EDIT_ME"
+  password: "EDIT_ME"
+
+  # Enable fallback hotspot (captive portal) in case wifi connection fails
+  ap:
+    ssid: "EDIT_ME"
+    password: "EDIT_ME"
+
+captive_portal:
+
+uart:
+  rx_pin: GPIO4
+  tx_pin: GPIO5
+  baud_rate: 9600
+
+tuya:
+
+# On-off.
+switch:
+  - platform: "tuya"
+    name: ${device_id}_power
+    switch_datapoint: 1
+
+# Target temperature.
+number:
+  - platform: "tuya"
+    name: ${device_id}_target_temp
+    device_class: temperature
+    unit_of_measurement: "°C"
+    number_datapoint: 2
+    min_value: 20
+    max_value: 40
+    step: 1
+
+# Current temperature.
+sensor:
+  - platform: "tuya"
+    name: ${device_id}_current_temp
+    device_class: temperature
+    unit_of_measurement: "°C"
+    sensor_datapoint: 3
+
+# Current mode.
+select:
+  - platform: "tuya"
+    name: ${device_id}_mode
+    enum_datapoint: 4
+    optimistic: false
+    options:
+      0: "ECO Heat"
+      1: "ECO Cool"
+      2: "Automatic"
+      3: "Boost Heat"
+      4: "Silent Heat"
+      5: "Boost Cool"
+      6: "Silent Cool"
