@@ -51,6 +51,7 @@ Put back the cover, connect the controller to the heat pump and you are ready to
 
 
 #### Connection diagram
+Warning: by ESP TX and ESP RX I mean the pins you configured in the `uart` section of the yaml config, not pins marked as `RX` and `TX`.
 ![Connection diagram](diagram.png)
 
 ## Summary
