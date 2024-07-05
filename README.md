@@ -38,7 +38,9 @@ At first, disconnect the heat pump from the power outlet. Wait until the display
 
 Now you will need to disable or remove the WBR3 module completely. I do not recommend to remove the module, you risk damaging the LCD. The WBR3 can be easily disabled by pulling the EN pin low (see attached diagram for pinout). So, to disable the WBR3, connect the EN pin to GND using a wire. *Important: you **need** to disable (or remove) the WBR3, otherwise the serial communication will not work and you will probably overload the onboard AMS1117 regulator.*
 
-Now, connect the TX pin of the WBR3 to the TX pin of the ESP and RX pin of the WBR3 to the RX pin of the ESP. *Note: the WBR3 is disabled, we will obviously communicate with the main MCU directly, we are soldering to the pins of the WBR3 only for convenience.*
+Now, connect the TX pin of the WBR3 to the pin of the ESP you configured as TX and same for the RX pin. In the configuration I used GPIO4 as RX and GPIO5 as TX but you can change it to any other available GPIO or you can use hardware UART (GPIO1 and GPIO3) -- but then you need to either disable UART logging or move logging to another UART.
+
+*Note: the WBR3 is disabled, we will obviously communicate with the main MCU directly, we are soldering to the pins of the WBR3 only for convenience.*
 
 At last, connect the ESP module to the Vcc and GND, see the picture and diagram below for the pin locations.
 

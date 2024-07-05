@@ -30,8 +30,8 @@ wifi:
 captive_portal:
 
 uart:
-  rx_pin: GPIO4
-  tx_pin: GPIO5
+  rx_pin: GPIO4 # To this pin you will connect WBR3's RX.
+  tx_pin: GPIO5 # To this pin you will connect WBR3's TX.
   baud_rate: 9600
 
 tuya:
